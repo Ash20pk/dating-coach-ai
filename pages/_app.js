@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { ChakraProvider, Box, Flex, Heading, Button, useColorMode, Container, useColorModeValue } from '@chakra-ui/react';
+import { ChakraProvider, Box, Flex, Heading, Button, useColorMode, Container, useColorModeValue, Img } from '@chakra-ui/react';
 import { Sun, Moon, Heart, LogOut } from 'lucide-react';
 import { useRouter } from 'next/router';
 import theme from '../styles/theme';
+import Image from 'next/image';
+import loadingGif from '../public/cupidLoading.gif'
 
 function MyApp({ Component, pageProps }) {
   const [user, setUser] = useState(null);
@@ -59,7 +61,12 @@ function MyApp({ Component, pageProps }) {
     return (
       <ChakraProvider theme={theme}>
         <Flex height="100vh" alignItems="center" justifyContent="center" bg={bgColor}>
-          <Heart size={48} color={theme.colors.brand[500]} />
+          <Image
+            src="/cupidLoading.gif"
+            alt="Loading"
+            width={100}
+            height={100}
+          />
         </Flex>
       </ChakraProvider>
     );
