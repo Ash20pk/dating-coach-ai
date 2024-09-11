@@ -247,7 +247,7 @@ const borderColor = useColorModeValue('brand.200', 'brand.600');
   };
 
   return (
-    <Container maxW="container.md" h="90vh" py={4}>
+    <Container maxW="container.md" h="80vh" py={4}>
       <VStack spacing={4} h="full">
         <Box
           flex={1}
