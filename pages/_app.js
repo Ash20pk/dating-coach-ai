@@ -1,13 +1,11 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ChakraProvider, Box, Flex, Heading, Button, useColorMode, Container, useColorModeValue } from '@chakra-ui/react';
-import { SunIcon, MoonIcon, Heart, LogOut } from 'lucide-react';
-import { useRouter } from 'next/router';
+import { Sun, Moon, Heart, LogOut } from 'lucide-react';
 import theme from '../styles/theme';
 
 function MyApp({ Component, pageProps }) {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const router = useRouter();
   const { colorMode, toggleColorMode } = useColorMode();
 
   useEffect(() => {
@@ -44,10 +42,12 @@ function MyApp({ Component, pageProps }) {
   const logout = () => {
     localStorage.removeItem('token');
     setUser(null);
-    router.push('/');
+    // Note: Actual navigation would be handled here
   };
 
+  // Use theme colors directly
   const bgColor = useColorModeValue('purple.50', 'gray.900');
+  const textColor = useColorModeValue('gray.800', 'white');
   const headerBgColor = useColorModeValue('white', 'gray.800');
   const headerShadow = useColorModeValue('sm', 'md');
 
@@ -63,7 +63,7 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <ChakraProvider theme={theme}>
-      <Box minHeight="100vh" bg={bgColor}>
+      <Box minHeight="100vh" bg={bgColor} color={textColor}>
         <Flex 
           as="header" 
           bg={headerBgColor} 
@@ -76,7 +76,7 @@ function MyApp({ Component, pageProps }) {
           alignItems="center"
         >
           <Container maxW="container.xl" display="flex" alignItems="center">
-            <Flex alignItems="center" cursor="pointer" onClick={() => router.push('/')}>
+            <Flex alignItems="center" cursor="pointer" onClick={() => console.log('Navigate to home')}>
               <Heart size={24} color={theme.colors.brand[500]} />
               <Heading size="lg" color="brand.500" ml={2}>LoveGuide</Heading>
             </Flex>
@@ -88,7 +88,7 @@ function MyApp({ Component, pageProps }) {
                 size="sm"
                 aria-label={colorMode === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
               >
-                {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+                {colorMode === 'light' ? <Moon size={18} /> : <Sun size={18} />}
               </Button>
               {user && (
                 <Button 
