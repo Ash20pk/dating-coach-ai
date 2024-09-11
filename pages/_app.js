@@ -87,7 +87,7 @@ function MyApp({ Component, pageProps }) {
           alignItems="center"
         >
           <Container maxW="container.xl" display="flex" alignItems="center">
-            <Flex alignItems="center" cursor="pointer" onClick={() => console.log('Navigate to home')}>
+            <Flex alignItems="center" cursor="pointer" onClick={() => router.push('/')}>
               <Heart size={24} color={theme.colors.brand[500]} />
               <Heading size="lg" color="brand.500" ml={2}>LoveGuide</Heading>
             </Flex>
