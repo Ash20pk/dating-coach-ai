@@ -6,9 +6,4 @@ module.exports = {
     JWT_SECRET: process.env.JWT_SECRET,
     OPENAI_API_KEY: process.env.OPENAI_API_KEY,
   },
-  api: {
-    bodyParser: {
-      sizeLimit: '1mb',
-    },
-  },
 }
