@@ -26,6 +26,8 @@ export default function AuthPage({onAuth}) {
   const [showPassword, setShowPassword] = useState(false);
   const toast = useToast();
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
+
 
   const handleSubmit = async (e, isLogin) => {
     e.preventDefault();
@@ -33,6 +35,7 @@ export default function AuthPage({onAuth}) {
     const userData = Object.fromEntries(formData.entries());
 
     try {
+      setIsLoading(true)
       const response = await fetch(`/api/${isLogin ? 'login' : 'signup'}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -40,6 +43,7 @@ export default function AuthPage({onAuth}) {
       });
       const data = await response.json();
       if (response.ok) {
+        setIsLoading(false)
         toast({
           title: isLogin ? "Login successful" : "Account created",
           description: `Welcome ${isLogin ? 'back to LoveGuide!' : 'to LoveGuide!'}`,
@@ -50,6 +54,7 @@ export default function AuthPage({onAuth}) {
         console.log(e);
         onAuth(data.token, data.user);
       } else {
+        setIsLoading(false)
         toast({
           title: isLogin ? "Login failed" : "Signup failed",
           description: data.message,
@@ -60,6 +65,7 @@ export default function AuthPage({onAuth}) {
       }
     } catch (error) {
       console.error('Auth error:', error);
+      setIsLoading(false)
       toast({
         title: "An error occurred",
         description: "Unable to process your request. Please try again.",
@@ -132,7 +138,7 @@ export default function AuthPage({onAuth}) {
                       </InputRightElement>
                     </InputGroup>
                   </FormControl>
-                  <Button type="submit" colorScheme="brand" width="full">
+                  <Button type="submit" colorScheme="brand" width="full" isLoading={isLoading}>
                     Login
                   </Button>
                 </VStack>
@@ -170,7 +176,7 @@ export default function AuthPage({onAuth}) {
                       </InputRightElement>
                     </InputGroup>
                   </FormControl>
-                  <Button type="submit" colorScheme="brand" width="full">
+                  <Button type="submit" colorScheme="brand" width="full" isLoading={isLoading}>
                     Sign Up
                   </Button>
                   <Text mt={4} textAlign="center" fontSize="sm" color={textColor}>
