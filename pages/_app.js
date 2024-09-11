@@ -64,8 +64,8 @@ function MyApp({ Component, pageProps }) {
           <Image
             src="/cupidLoading.gif"
             alt="Loading"
-            width={100}
-            height={100}
+            width={300}
+            height={300}
           />
         </Flex>
       </ChakraProvider>
