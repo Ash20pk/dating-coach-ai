@@ -1,6 +1,6 @@
-// This function can run for a maximum of 5 seconds
+// This function can run for a maximum of 30 seconds
 export const config = {
-    maxDuration: 5,
+    maxDuration: 30,
   };
    
   export default function handler(request, response) {

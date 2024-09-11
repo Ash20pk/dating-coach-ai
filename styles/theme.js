@@ -17,6 +17,10 @@ const theme = extendTheme({
         display: 'flex',
         flexDirection: 'column',
       },
+      config: {
+        initialColorMode: 'light',
+        useSystemColorMode: false,
+      },
     }),
   },
   colors: {

@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { ChakraProvider, Box, Flex, Heading, Button, useColorMode, Container, useColorModeValue } from '@chakra-ui/react';
 import { Sun, Moon, Heart, LogOut } from 'lucide-react';
+import { useRouter } from 'next/router';
 import theme from '../styles/theme';
 
 function MyApp({ Component, pageProps }) {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const { colorMode, toggleColorMode } = useColorMode();
+  const router = useRouter();
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -27,9 +29,11 @@ function MyApp({ Component, pageProps }) {
         setUser(userData);
       } else {
         localStorage.removeItem('token');
+        setUser(null);
       }
     } catch (error) {
       console.error('Error fetching user:', error);
+      setUser(null);
     }
     setIsLoading(false);
   };
@@ -42,7 +46,7 @@ function MyApp({ Component, pageProps }) {
   const logout = () => {
     localStorage.removeItem('token');
     setUser(null);
-    // Note: Actual navigation would be handled here
+    router.push('/');
   };
 
   // Use theme colors directly
