@@ -1,58 +1,9 @@
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
 import { VStack, Text, Box, Fade, useColorModeValue } from '@chakra-ui/react';
-import Auth from './components/auth';
+import { useAuth } from './components/authContext';
+
 
 export default function Home() {
-  const router = useRouter();
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const checkAuth = async () => {
-      const token = localStorage.getItem('token');
-      if (token) {
-        try {
-          const response = await fetch('/api/user', {
-            headers: {
-              'Authorization': `Bearer ${token}`
-            }
-          });
-          if (response.ok) {
-            const userData = await response.json();
-            if (!userData.onboardingComplete) {
-              router.push('/onboarding');
-            } else {
-              router.push('/dating-assistant');
-            }
-          } else {
-            // Token is invalid, remove it
-            localStorage.removeItem('token');
-            setIsLoading(false);
-          }
-        } catch (error) {
-          console.error('Error checking authentication:', error);
-          setIsLoading(false);
-        }
-      } else {
-        setIsLoading(false);
-      }
-    };
-
-    checkAuth();
-  }, [router]);
-
-  const handleAuth = async (token, userData) => {
-    localStorage.setItem('token', token);
-    if (!userData.onboardingComplete) {
-      router.push('/onboarding');
-    } else {
-      router.push('/dating-assistant');
-    }
-  };
-
-  if (isLoading) {
-    return null; // or a loading spinner
-  }
+  const { AuthComponent } = useAuth();
 
   const bgColor = useColorModeValue('purple.50', 'gray.900');
   const titleColor = useColorModeValue('brand.600', 'brand.300');
@@ -68,7 +19,7 @@ export default function Home() {
           <Text fontSize="xl" color={subtitleColor}>
             Your Personal Dating Coach
           </Text>
-          <Auth onAuth={handleAuth} />
+          <AuthComponent/>
         </Box>
       </VStack>
     </Fade>
