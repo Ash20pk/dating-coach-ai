@@ -51,7 +51,6 @@ export default function AuthPage({onAuth}) {
           duration: 3000,
           isClosable: true,
         });
-        console.log(e);
         onAuth(data.token, data.user);
       } else {
         setIsLoading(false)
