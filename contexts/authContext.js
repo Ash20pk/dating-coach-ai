@@ -1,7 +1,7 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useToast } from '@chakra-ui/react';
-import AuthPage from './auth';  
+import AuthPage from '../pages/components/auth';  
 
 const AuthContext = createContext();
 

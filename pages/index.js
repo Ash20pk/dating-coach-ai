@@ -1,5 +1,5 @@
 import { VStack, Text, Box, Fade, useColorModeValue } from '@chakra-ui/react';
-import { useAuth } from './components/authContext';
+import { useAuth } from '../contexts/authContext';
 
 
 export default function Home() {

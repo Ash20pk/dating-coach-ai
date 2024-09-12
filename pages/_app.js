@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import theme from '../styles/theme';
 import Image from 'next/image';
 import loadingGif from '../public/cupidLoading.gif'
-import { AuthProvider, useAuth } from './components/authContext';
+import { AuthProvider, useAuth } from '../contexts/authContext';
 
 function AppContent({ Component, pageProps }) {
   const { colorMode, toggleColorMode } = useColorMode();
