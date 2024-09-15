@@ -6,13 +6,28 @@ import theme from '../styles/theme';
 import Image from 'next/image';
 import loadingGif from '../public/cupidLoading.gif'
 import { AuthProvider, useAuth } from '../contexts/authContext';
+import { Global } from '@emotion/react';
+
+const Fonts = () => (
+  <Global
+    styles={`
+      @font-face {
+        font-family: 'Lobster';
+        src: url('/fonts/Lobster.woff2') format('woff2');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+    `}
+  />
+);
 
 function AppContent({ Component, pageProps }) {
   const { colorMode, toggleColorMode } = useColorMode();
   const router = useRouter();
   const { user, logout, loading } = useAuth();
 
-  const bgColor = useColorModeValue('purple.50', 'gray.900');
+  const bgColor = useColorModeValue('gray.50', 'gray.900');
   const textColor = useColorModeValue('gray.800', 'white');
   const headerBgColor = useColorModeValue('white', 'gray.800');
   const headerShadow = useColorModeValue('sm', 'md');
@@ -30,8 +45,10 @@ function AppContent({ Component, pageProps }) {
     );
   }
 
+  const isDatingAssistant = router.pathname === '/dating-assistant';
+
   return (
-    <Box minHeight="100vh" bg={bgColor} color={textColor}>
+    <Flex flexDirection="column" minHeight="100vh" bg={bgColor} color={textColor}>
       <Flex 
         as="header" 
         bg={headerBgColor} 
@@ -46,7 +63,16 @@ function AppContent({ Component, pageProps }) {
         <Container maxW="container.xl" display="flex" alignItems="center">
           <Flex alignItems="center" cursor="pointer" onClick={() => router.push('/')}>
             <Heart size={24} color={theme.colors.brand[500]} />
-            <Heading size="lg" color="brand.500" ml={2}>LoveGuide</Heading>
+            <Heading 
+              size="lg" 
+              color={textColor} 
+              ml={2} 
+              fontFamily="Lobster, cursive"
+              fontWeight="normal"
+              fontSize="4xl"
+            >
+              Love Guide
+            </Heading>
           </Flex>
           <Flex ml="auto" alignItems="center">
             <Button 
@@ -71,16 +97,23 @@ function AppContent({ Component, pageProps }) {
           </Flex>
         </Container>
       </Flex>
-      <Container maxW="container.xl" py={8}>
-        <Component {...pageProps} />
-      </Container>
-    </Box>
+      <Flex flexGrow={1} flexDirection="column">
+        {isDatingAssistant ? (
+          <Component {...pageProps} />
+        ) : (
+          <Container maxW="container.xl" py={8} flexGrow={1}>
+            <Component {...pageProps} />
+          </Container>
+        )}
+      </Flex>
+    </Flex>
   );
 }
 
 function MyApp({ Component, pageProps }) {
   return (
     <ChakraProvider theme={theme}>
+      <Fonts />
       <AuthProvider>
         <AppContent Component={Component} pageProps={pageProps} />
       </AuthProvider>

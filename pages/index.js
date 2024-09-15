@@ -5,7 +5,7 @@ import { useAuth } from '../contexts/authContext';
 export default function Home() {
   const { AuthComponent } = useAuth();
 
-  const bgColor = useColorModeValue('purple.50', 'gray.900');
+  const bgColor = useColorModeValue('gray.50', 'gray.900');
   const titleColor = useColorModeValue('brand.600', 'brand.300');
   const subtitleColor = useColorModeValue('gray.600', 'gray.400');
 

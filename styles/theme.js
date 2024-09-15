@@ -1,14 +1,17 @@
 import { extendTheme } from '@chakra-ui/react';
 
 const theme = extendTheme({
+  fonts: {
+    heading: 'Söhne, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif, "Helvetica Neue", Arial',
+    body: 'Söhne, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif, "Helvetica Neue", Arial',
+  },
   styles: {
     global: (props) => ({
       body: {
-        bg: props.colorMode === 'dark' ? 'gray.900' : 'purple.50',
+        bg: props.colorMode === 'dark' ? '#343541' : 'white',
         color: props.colorMode === 'dark' ? 'white' : 'gray.800',
         minHeight: '100vh',
         margin: 0,
-        fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif',
         WebkitFontSmoothing: 'antialiased',
         MozOsxFontSmoothing: 'grayscale',
       },
@@ -17,36 +20,32 @@ const theme = extendTheme({
         display: 'flex',
         flexDirection: 'column',
       },
-      config: {
-        initialColorMode: 'light',
-        useSystemColorMode: false,
-      },
     }),
   },
   colors: {
-    brand: {
-      50: '#ffe6ff',
-      100: '#ffb3ff',
-      200: '#ff80ff',
-      300: '#ff4dff',
-      400: '#ff1aff',
-      500: '#e600e6',
-      600: '#b300b3',
-      700: '#800080',
-      800: '#4d004d',
-      900: '#1a001a',
+    gray: {
+      50: '#f7f7f8',
+      100: '#ececf1',
+      200: '#d9d9e3',
+      300: '#c5c5d2',
+      400: '#acacbe',
+      500: '#8e8ea0',
+      600: '#565869',
+      700: '#40414f',
+      800: '#343541',
+      900: '#202123',
     },
-    accent: {
-      50: '#e6faff',
-      100: '#b3f0ff',
-      200: '#80e6ff',
-      300: '#4ddbff',
-      400: '#1ad1ff',
-      500: '#00bfff',
-      600: '#0099cc',
-      700: '#007399',
-      800: '#004d66',
-      900: '#001a22',
+    brand: {
+      50: '#ffe6eb',
+      100: '#ffb3c2',
+      200: '#ff8099',
+      300: '#ff4d71',
+      400: '#ff1a48',
+      500: '#e6002e',
+      600: '#b30024',
+      700: '#80001a',
+      800: '#4d0010',
+      900: '#1a0005',
     },
   },
   config: {
@@ -56,14 +55,21 @@ const theme = extendTheme({
   components: {
     Button: {
       baseStyle: {
-        fontWeight: 'bold',
+        fontWeight: 'medium',
+        borderRadius: 'md',
       },
       variants: {
         solid: (props) => ({
-          bg: props.colorMode === 'dark' ? 'brand.300' : 'brand.500',
+          bg: props.colorMode === 'dark' ? 'brand.400' : 'brand.500',
           color: 'white',
           _hover: {
-            bg: props.colorMode === 'dark' ? 'brand.400' : 'brand.600',
+            bg: props.colorMode === 'dark' ? 'brand.500' : 'brand.600',
+          },
+        }),
+        ghost: (props) => ({
+          color: props.colorMode === 'dark' ? 'gray.200' : 'gray.700',
+          _hover: {
+            bg: props.colorMode === 'dark' ? 'gray.700' : 'gray.100',
           },
         }),
       },
@@ -72,16 +78,22 @@ const theme = extendTheme({
       variants: {
         outline: (props) => ({
           field: {
-            borderColor: props.colorMode === 'dark' ? 'brand.600' : 'brand.200',
+            borderColor: props.colorMode === 'dark' ? 'gray.600' : 'gray.300',
+            bg: props.colorMode === 'dark' ? 'gray.700' : 'white',
             _hover: {
-              borderColor: props.colorMode === 'dark' ? 'brand.500' : 'brand.300',
+              borderColor: props.colorMode === 'dark' ? 'gray.500' : 'gray.400',
             },
             _focus: {
-              borderColor: props.colorMode === 'dark' ? 'brand.400' : 'brand.500',
+              borderColor: 'brand.400',
               boxShadow: `0 0 0 1px ${props.colorMode === 'dark' ? 'brand.400' : 'brand.500'}`,
             },
           },
         }),
+      },
+    },
+    Heading: {
+      baseStyle: {
+        fontWeight: 'semibold',
       },
     },
   },
