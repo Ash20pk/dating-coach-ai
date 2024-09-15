@@ -29,12 +29,11 @@ const ChatMessage = ({ message }) => {
       <Flex
         maxW="70%"
         align="start"
-        bg={isAssistant ? bgColor : 'brand.500'}
+        bg={isAssistant ? undefined : 'brand.500'}
         color={isAssistant ? 'inherit' : 'white'}
         px={4}
         py={3}
         borderRadius="lg"
-        boxShadow="md"
       >
         {isAssistant && (
           <Avatar 
