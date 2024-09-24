@@ -19,15 +19,15 @@ import {
   TabPanel,
   Heading,
   Flex,
+  IconButton,
 } from '@chakra-ui/react';
-import { Eye, EyeOff, Heart } from 'lucide-react';
+import { Eye, EyeOff, Heart, X } from 'lucide-react';
 
-export default function AuthPage({onAuth}) {
+export default function AuthPage({ onAuth, onClose }) {
   const [showPassword, setShowPassword] = useState(false);
   const toast = useToast();
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
-
 
   const handleSubmit = async (e, isLogin) => {
     e.preventDefault();
@@ -82,7 +82,7 @@ export default function AuthPage({onAuth}) {
   const borderColor = useColorModeValue('brand.200', 'brand.600');
 
   return (
-    <Flex width="full" mt="10%" align="center" justifyContent="center" bg={useColorModeValue('purple.50', 'gray.900')}>
+    <Flex width="full" mt="30%" align="center" justifyContent="center">
       <Box 
         bg={bgColor} 
         p={8} 
@@ -92,18 +92,26 @@ export default function AuthPage({onAuth}) {
         maxWidth="400px"
         borderWidth={2}
         borderColor={borderColor}
+        position="relative"
       >
+        <IconButton
+          icon={<X />}
+          aria-label="Close"
+          size="sm"
+          position="absolute"
+          right="8px"
+          top="8px"
+          onClick={onClose}
+        />
         <Tabs isFitted variant="enclosed">
           <TabList mb="1em">
             <Tab 
-              _selected={{ color: 'brand.500', bg: activeTabBg, borderBottomColor: 'brand.500' }}
-              _hover={{ bg: tabBg }}
+              _selected={{ color: 'brand.500', borderBottomColor: 'brand.500' }}
             >
               Login
             </Tab>
             <Tab 
-              _selected={{ color: 'brand.500', bg: activeTabBg, borderBottomColor: 'brand.500' }}
-              _hover={{ bg: tabBg }}
+              _selected={{ color: 'brand.500', borderBottomColor: 'brand.500' }}
             >
               Sign Up
             </Tab>

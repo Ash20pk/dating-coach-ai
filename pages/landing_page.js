@@ -23,7 +23,7 @@ import {
 } from '@chakra-ui/react';
 import { FaRobot, FaComments, FaMagic } from 'react-icons/fa';
 import { GiCrystalBall, GiCupidTarget, GiLovers } from 'react-icons/gi';
-import TestimonialCarousel from './TestimonialCarousel';
+import TestimonialCarousel from '../components/TestimonialCarousel';
 
 const AppLogo = ({ name }) => (
   <Box
@@ -199,7 +199,7 @@ const LandingPage = ({ onShowAuth }) => {
               <Feature
                 icon={FaComments}
                 title="Conversation Spark"
-                text="Never run out of things to say with our AI-generated prompts."
+                text="Never run out of things to say with our AI-powered conversation starter."
               />
             </SimpleGrid>
           </Container>
