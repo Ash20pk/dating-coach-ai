@@ -126,8 +126,8 @@ const LandingPage = ({ onShowAuth }) => {
   return (
     <>
       <Head>
-        <title>AI Dating Coach - Your Path to Love</title>
-        <meta name="description" content="AI-powered dating coach to help you find your perfect match" />
+        <title>AI DatingCoachGPT - Your Path to Love</title>
+        <meta name="description" content="AI-powered DatingCoachGPT to help you find your perfect match" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -140,7 +140,7 @@ const LandingPage = ({ onShowAuth }) => {
                 Find Love with AI Magic ✨
               </Heading>
               <Text fontSize="xl" maxW="2xl" color={headingColor}>
-                Your personal AI dating coach is here to guide you to meaningful connections and lasting relationships.
+                Your personal AI DatingCoachGPT is here to guide you to meaningful connections and lasting relationships.
               </Text>
               <Button size="lg" colorScheme="whiteAlpha" onClick={onShowAuth}>
                 Start Your Love Journey
@@ -267,13 +267,13 @@ const LandingPage = ({ onShowAuth }) => {
                 <h2>
                   <AccordionButton>
                     <Box flex="1" textAlign="left">
-                      How does the AI Dating Coach work?
+                      How does the DatingCoachGPT work?
                     </Box>
                     <AccordionIcon />
                   </AccordionButton>
                 </h2>
                 <AccordionPanel pb={4}>
-                  Our AI Dating Coach uses advanced algorithms to analyze your preferences, behavior, and interactions. It provides personalized advice, helps optimize your profile, and suggests potential matches based on compatibility.
+                  Our AI DatingCoachGPT uses advanced algorithms to analyze your preferences, behavior, and interactions. It provides personalized advice, helps optimize your profile, and suggests potential matches based on compatibility.
                 </AccordionPanel>
               </AccordionItem>
 
@@ -301,7 +301,7 @@ const LandingPage = ({ onShowAuth }) => {
                   </AccordionButton>
                 </h2>
                 <AccordionPanel pb={4}>
-                  Absolutely! Our AI Dating Coach is designed to work alongside popular dating apps. You can apply the insights and advice you receive to improve your dating experience across multiple platforms.
+                  Absolutely! Our AI DatingCoachGPT is designed to work alongside popular dating apps. You can apply the insights and advice you receive to improve your dating experience across multiple platforms.
                 </AccordionPanel>
               </AccordionItem>
 
@@ -315,7 +315,7 @@ const LandingPage = ({ onShowAuth }) => {
                   </AccordionButton>
                 </h2>
                 <AccordionPanel pb={4}>
-                  We offer a 30-day money-back guarantee. If you're not completely satisfied with our AI Dating Coach, you can request a full refund within the first 30 days of your subscription.
+                  We offer a 30-day money-back guarantee. If you're not completely satisfied with our AI DatingCoachGPT, you can request a full refund within the first 30 days of your subscription.
                 </AccordionPanel>
               </AccordionItem>
             </Accordion>
@@ -382,7 +382,7 @@ const LandingPage = ({ onShowAuth }) => {
             </VStack>
           </SimpleGrid>
           <Box borderTopWidth={1} borderColor={footerColor} mt={8} pt={8} textAlign="center">
-            <Text>&copy; {new Date().getFullYear()} AI Dating Coach. All rights reserved.</Text>
+            <Text>&copy; {new Date().getFullYear()} AI DatingCoachGPT. All rights reserved.</Text>
           </Box>
         </Container>
       </Box>

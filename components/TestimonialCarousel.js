@@ -6,7 +6,7 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 const testimonials = [
   {
     name: 'Sarah M.',
-    text: 'The AI Dating Coach helped me understand what I really want in a partner. I\'m now in a fulfilling relationship!',
+    text: 'The AI DatingCoachGPT helped me understand what I really want in a partner. I\'m now in a fulfilling relationship!',
     avatar: '/images/avatars/sarah.jpg',
   },
   {
