@@ -46,7 +46,7 @@ export default function AuthPage({ onAuth, onClose }) {
         setIsLoading(false)
         toast({
           title: isLogin ? "Login successful" : "Account created",
-          description: `Welcome ${isLogin ? 'back to LoveGuide!' : 'to LoveGuide!'}`,
+          description: `Welcome ${isLogin ? 'back to Dating Coach!' : 'to Dating Coach!'}`,
           status: "success",
           duration: 3000,
           isClosable: true,

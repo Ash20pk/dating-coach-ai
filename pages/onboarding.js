@@ -58,7 +58,7 @@ export default function OnboardingPage() {
       if (response.ok) {
         toast({
           title: "Onboarding Complete",
-          description: "Welcome to LoveGuide! Your profile is now set up.",
+          description: "Welcome to Dating Coach! Your profile is now set up.",
           status: "success",
           duration: 5000,
           isClosable: true,
@@ -138,7 +138,7 @@ export default function OnboardingPage() {
           <VStack spacing={6} align="stretch">
             <Flex align="center" justify="center" mb={4}>
               <Heart size={24} color="brand.500" />
-              <Heading size="lg" color="brand.500" ml={2}>LoveGuide Onboarding</Heading>
+              <Heading size="lg" color="brand.500" ml={2}>Dating Coach Onboarding</Heading>
             </Flex>
             <Progress value={(step + 1) * 33.33} colorScheme="brand" borderRadius="full" />
             <Text fontSize="md" textAlign="center" color={textColor}>

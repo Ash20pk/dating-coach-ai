@@ -71,7 +71,7 @@ function AppContent({ Component, pageProps }) {
               fontWeight="normal"
               fontSize="4xl"
             >
-              Love Guide
+              Dating Coach
             </Heading>
           </Flex>
           <Flex ml="auto" alignItems="center">
