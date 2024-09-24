@@ -126,7 +126,7 @@ const LandingPage = ({ onShowAuth }) => {
   return (
     <>
       <Head>
-        <title>AI DatingCoachGPT - Your Path to Love</title>
+        <title>DatingCoachGPT - Your Path to Love</title>
         <meta name="description" content="AI-powered DatingCoachGPT to help you find your perfect match" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -140,7 +140,7 @@ const LandingPage = ({ onShowAuth }) => {
                 Find Love with AI Magic ✨
               </Heading>
               <Text fontSize="xl" maxW="2xl" color={headingColor}>
-                Your personal AI DatingCoachGPT is here to guide you to meaningful connections and lasting relationships.
+                Your personal DatingCoachGPT is here to guide you to meaningful connections and lasting relationships.
               </Text>
               <Button size="lg" colorScheme="whiteAlpha" onClick={onShowAuth}>
                 Start Your Love Journey
@@ -273,7 +273,7 @@ const LandingPage = ({ onShowAuth }) => {
                   </AccordionButton>
                 </h2>
                 <AccordionPanel pb={4}>
-                  Our AI DatingCoachGPT uses advanced algorithms to analyze your preferences, behavior, and interactions. It provides personalized advice, helps optimize your profile, and suggests potential matches based on compatibility.
+                  Our DatingCoachGPT uses advanced algorithms to analyze your preferences, behavior, and interactions. It provides personalized advice, helps optimize your profile, and suggests potential matches based on compatibility.
                 </AccordionPanel>
               </AccordionItem>
 
@@ -301,7 +301,7 @@ const LandingPage = ({ onShowAuth }) => {
                   </AccordionButton>
                 </h2>
                 <AccordionPanel pb={4}>
-                  Absolutely! Our AI DatingCoachGPT is designed to work alongside popular dating apps. You can apply the insights and advice you receive to improve your dating experience across multiple platforms.
+                  Absolutely! Our DatingCoachGPT is designed to work alongside popular dating apps. You can apply the insights and advice you receive to improve your dating experience across multiple platforms.
                 </AccordionPanel>
               </AccordionItem>
 
