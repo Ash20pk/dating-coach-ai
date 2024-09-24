@@ -20,8 +20,9 @@ import {
   Wrap,
   WrapItem,
   Image,
+  Link,
 } from '@chakra-ui/react';
-import { FaRobot, FaComments, FaMagic } from 'react-icons/fa';
+import { FaRobot, FaComments, FaMagic, FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
 import { GiCrystalBall, GiCupidTarget, GiLovers } from 'react-icons/gi';
 import TestimonialCarousel from '../components/TestimonialCarousel';
 
@@ -45,25 +46,22 @@ const AppLogo = ({ name }) => (
   </Box>
 );
 
-
-const Feature = ({ icon, title, text }) => {
-  return (
-    <VStack 
-      align="center" 
-      spacing={4} 
-      p={6} 
-      bg={useColorModeValue('white', 'gray.700')} 
-      borderRadius="xl" 
-      boxShadow="md" 
-      transition="all 0.3s"
-      _hover={{ transform: 'translateY(-5px)', boxShadow: 'lg' }}
-    >
-      <Icon as={icon} w={12} h={12} color="brand.500" />
-      <Heading size="md" textAlign="center">{title}</Heading>
-      <Text textAlign="center">{text}</Text>
-    </VStack>
-  );
-};
+const Feature = ({ icon, title, text }) => (
+  <VStack 
+    align="center" 
+    spacing={4} 
+    p={6} 
+    bg={useColorModeValue('white', 'gray.700')} 
+    borderRadius="xl" 
+    boxShadow="md" 
+    transition="all 0.3s"
+    _hover={{ transform: 'translateY(-5px)', boxShadow: 'lg' }}
+  >
+    <Icon as={icon} w={12} h={12} color="brand.500" />
+    <Heading size="md" textAlign="center">{title}</Heading>
+    <Text textAlign="center">{text}</Text>
+  </VStack>
+);
 
 const PricingCard = ({ title, price, features, isPopular }) => {
   const bgColor = useColorModeValue('white', 'gray.700');
@@ -122,6 +120,8 @@ const PricingCard = ({ title, price, features, isPopular }) => {
 const LandingPage = ({ onShowAuth }) => {
   const headingColor = useColorModeValue('gray.800', 'white');
   const textColor = useColorModeValue('gray.600', 'gray.300');
+  const footerColor = useColorModeValue('gray.700', 'gray.200');
+  const footerBg = useColorModeValue('gray.100', 'gray.900');
 
   return (
     <>
@@ -344,6 +344,45 @@ const LandingPage = ({ onShowAuth }) => {
             </Button>
           </Container>
         </Box>
+      </Box>
+
+      {/* Footer Section */}
+      <Box as="footer" bg={footerBg} color={footerColor} py={10}>
+        <Container maxW="container.xl">
+          <SimpleGrid columns={{ base: 1, md: 4 }} spacing={8}>
+            <VStack align="flex-start">
+              <Heading size="md" mb={4}>About Us</Heading>
+              <Link href="#">Our Story</Link>
+              <Link href="#">Team</Link>
+              <Link href="#">Careers</Link>
+            </VStack>
+            <VStack align="flex-start">
+              <Heading size="md" mb={4}>Resources</Heading>
+              <Link href="#">Blog</Link>
+              <Link href="#">Dating Tips</Link>
+              <Link href="#">Success Stories</Link>
+            </VStack>
+            <VStack align="flex-start">
+              <Heading size="md" mb={4}>Support</Heading>
+              <Link href="#">FAQ</Link>
+              <Link href="#">Contact Us</Link>
+              <Link href="#">Privacy Policy</Link>
+              <Link href="#">Terms of Service</Link>
+            </VStack>
+            <VStack align="flex-start">
+              <Heading size="md" mb={4}>Connect With Us</Heading>
+              <HStack spacing={4}>
+                <Link href="#" aria-label="Facebook"><Icon as={FaFacebook} w={6} h={6} /></Link>
+                <Link href="#" aria-label="Twitter"><Icon as={FaTwitter} w={6} h={6} /></Link>
+                <Link href="#" aria-label="Instagram"><Icon as={FaInstagram} w={6} h={6} /></Link>
+                <Link href="#" aria-label="LinkedIn"><Icon as={FaLinkedin} w={6} h={6} /></Link>
+              </HStack>
+            </VStack>
+          </SimpleGrid>
+          <Box borderTopWidth={1} borderColor={footerColor} mt={8} pt={8} textAlign="center">
+            <Text>&copy; {new Date().getFullYear()} AI Dating Coach. All rights reserved.</Text>
+          </Box>
+        </Container>
       </Box>
     </>
   );
