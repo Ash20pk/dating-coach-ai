@@ -339,6 +339,8 @@ const LandingPage = ({ onShowAuth }) => {
               fontSize="xl"
               _hover={{ transform: 'scale(1.05)', boxShadow: 'xl' }}
               transition="all 0.3s"
+              border="2px solid"
+              borderColor="white"
             >
               Get Started Now
             </Button>
