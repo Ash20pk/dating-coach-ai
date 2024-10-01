@@ -63,12 +63,14 @@ const Feature = ({ icon, title, text }) => (
   </VStack>
 );
 
-const PricingCard = ({ title, price, features, isPopular }) => {
+const PricingCard = ({ title, price, features, isPopular, onClick }) => {
   const bgColor = useColorModeValue('white', 'gray.700');
   const borderColor = useColorModeValue('gray.200', 'gray.600');
 
   return (
-    <Box
+    <Flex
+      direction="column"
+      justify="space-between"
       borderWidth="1px"
       borderRadius="xl"
       borderColor={isPopular ? 'brand.500' : borderColor}
@@ -109,11 +111,8 @@ const PricingCard = ({ title, price, features, isPopular }) => {
             <Text>{feature}</Text>
           </HStack>
         ))}
-        <Button colorScheme="brand" size="lg" mt={4}>
-          Choose Plan
-        </Button>
       </VStack>
-    </Box>
+    </Flex>
   );
 };
 
