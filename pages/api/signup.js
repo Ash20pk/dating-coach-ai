@@ -13,13 +13,12 @@ export default async function handler(req, res) {
         return res.status(400).json({ message: "Email already exists" });
       }
       const hashedPassword = await bcrypt.hash(password, 10);
-      const user = new User({ 
-        name, 
-        email, 
+      const user = await User.create({
+        name,
+        email,
         password: hashedPassword,
-        onboardingComplete: false  // Ensure this field is set for new users
+        credits: 50, // set initial credits to 50
       });
-      await user.save();
 
       // Generate token for the new user
       const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1d' });
@@ -31,7 +30,8 @@ export default async function handler(req, res) {
           id: user._id, 
           name: user.name, 
           email: user.email, 
-          onboardingComplete: user.onboardingComplete 
+          onboardingComplete: user.onboardingComplete,
+          credits: user.credits // include credits in the response
         }
       });
     } catch (error) {

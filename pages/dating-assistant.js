@@ -13,7 +13,8 @@ import {
   Icon,
   Center,
 } from '@chakra-ui/react';
-import { Send, User, MessageSquare, FileText, Shirt, Mail } from 'lucide-react';
+import { Send, User, MessageSquare, FileText, Shirt, Mail, CreditCard } from 'lucide-react';
+import { useAuth } from '../contexts/authContext';
 
 const ChatMessage = ({ message }) => {
   const bgColor = useColorModeValue('white', 'gray.700');
@@ -105,6 +106,8 @@ export default function DatingAssistantPage() {
   const [userName, setUserName] = useState('');
   const messagesEndRef = useRef(null);
   const router = useRouter();
+  const { user, updateUser } = useAuth();
+  const [remainingCredits, setRemainingCredits] = useState(user?.credits || 0);
 
   const bg = useColorModeValue('gray.50', 'gray.900');
   const borderColor = useColorModeValue('gray.200', 'gray.700');
@@ -113,9 +116,14 @@ export default function DatingAssistantPage() {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [conversation]);
 
+
   useEffect(() => {
     checkUser();
   }, [router]);
+
+  useEffect(() => {
+    setRemainingCredits(user?.credits || 0);
+  }, [user]);
 
   const checkUser = async () => {
     const token = localStorage.getItem('token');
@@ -137,6 +145,11 @@ export default function DatingAssistantPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!input.trim()) return;
+
+    if (remainingCredits <= 0) {
+      alert("You have used up your free credits. Please upgrade to continue.");
+      return;
+    }
 
     try {
       const token = localStorage.getItem('token');
@@ -181,6 +194,9 @@ export default function DatingAssistantPage() {
         alert("Connection Error: Failed to connect to the server. Please try again.");
       };
 
+      setRemainingCredits(prev => prev - 1);
+      await updateUser({ credits: remainingCredits - 1 });
+
     } catch (error) {
       console.error('Error getting advice:', error);
       alert("Error: An error occurred while getting advice. Please try again.");
@@ -219,20 +235,45 @@ export default function DatingAssistantPage() {
         )}
       </Box>
       <Box borderTop="1px" borderColor={borderColor} p={4} bg={useColorModeValue('white', 'gray.800')}>
+        <Flex maxW="3xl" mx="auto" mb={2} justify="space-between" align="center">
+          <Flex align="center">
+            <Icon as={CreditCard} size={20} color="gray.500" mr={2} />
+            <Text>
+              Free credits: <strong>{remainingCredits}</strong>
+            </Text>
+          </Flex>
+          {remainingCredits <= 0 ? (
+            <Button colorScheme="brand" size="sm">
+              Upgrade
+            </Button>
+          ) : (
+            <Text fontSize="sm" color="gray.500">
+              Need more credits?{' '}
+              <Button
+                variant="link"
+                colorScheme="brand"
+                size="sm"
+                onClick={() => router.push('/pricing')}
+              >
+                Upgrade
+              </Button>
+            </Text>
+          )}
+        </Flex>
         <Flex as="form" onSubmit={handleSubmit} maxW="3xl" mx="auto">
           <Input
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Ask me for any dating advice..."
             mr={2}
-            isDisabled={isLoading}
+            isDisabled={isLoading || remainingCredits <= 0}
             size="lg"
             borderRadius="full"
           />
           <Button
             type="submit"
             colorScheme="brand"
-            isDisabled={isLoading}
+            isDisabled={isLoading || remainingCredits <= 0}
             size="lg"
             borderRadius="full"
           >
