@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChakraProvider, Box, Flex, Heading, Button, useColorMode, Container, useColorModeValue } from '@chakra-ui/react';
+import { ChakraProvider, Text, Flex, Heading, Button, useColorMode, Container, useColorModeValue } from '@chakra-ui/react';
 import { Sun, Moon, Heart, LogOut } from 'lucide-react';
 import { useRouter } from 'next/router';
 import theme from '../styles/theme';
@@ -12,8 +12,8 @@ const Fonts = () => (
   <Global
     styles={`
       @font-face {
-        font-family: 'Lobster';
-        src: url('/fonts/Lobster.woff2') format('woff2');
+        font-family: 'Source Sans Pro';
+        src: url('/fonts/SourceSansPro-Regular.woff2') format('woff2');
         font-weight: normal;
         font-style: normal;
         font-display: swap;
@@ -62,14 +62,14 @@ function AppContent({ Component, pageProps }) {
       >
         <Container maxW="container.xl" display="flex" alignItems="center">
           <Flex alignItems="center" cursor="pointer" onClick={() => router.push('/')}>
-            <Heart size={24} color={theme.colors.brand[500]} />
+            <Heart size={24} color={theme.colors.brand[900]} />
             <Heading 
               size="lg" 
               color={textColor} 
               ml={2} 
-              fontFamily="Lobster, cursive"
-              fontWeight="normal"
-              fontSize="4xl"
+              fontFamily="'Source Sans Pro', sans-serif"
+              fontWeight="bold"
+              fontSize="2xl"
             >
               DatingCoachGPT
             </Heading>
@@ -87,7 +87,9 @@ function AppContent({ Component, pageProps }) {
             {user && (
               <Button 
                 onClick={logout} 
-                colorScheme="brand" 
+                color="black" 
+                border="2px solid" 
+                borderColor="black" 
                 size="sm" 
                 leftIcon={<LogOut size={18} />}
               >

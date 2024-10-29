@@ -251,7 +251,7 @@ export default function DatingAssistantPage() {
               Need more credits?{' '}
               <Button
                 variant="link"
-                colorScheme="brand"
+                color="black"
                 size="sm"
                 onClick={() => router.push('/pricing')}
               >

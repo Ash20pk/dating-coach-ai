@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useRouter } from 'next/router';
 import {
   Box,
   Button,
@@ -26,7 +25,6 @@ import { Eye, EyeOff, Heart, X } from 'lucide-react';
 export default function AuthPage({ onAuth, onClose }) {
   const [showPassword, setShowPassword] = useState(false);
   const toast = useToast();
-  const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e, isLogin) => {
@@ -77,8 +75,6 @@ export default function AuthPage({ onAuth, onClose }) {
 
   const bgColor = useColorModeValue('white', 'gray.800');
   const textColor = useColorModeValue('gray.600', 'gray.200');
-  const tabBg = useColorModeValue('purple.50', 'gray.700');
-  const activeTabBg = useColorModeValue('white', 'gray.800');
   const borderColor = useColorModeValue('brand.200', 'brand.600');
 
   return (
@@ -145,7 +141,7 @@ export default function AuthPage({ onAuth, onClose }) {
                       </InputRightElement>
                     </InputGroup>
                   </FormControl>
-                  <Button type="submit" colorScheme="brand" width="full" isLoading={isLoading}>
+                  <Button type="submit" color="black" border="2px solid" borderColor="black" width="full" isLoading={isLoading}>
                     Login
                   </Button>
                 </VStack>
@@ -183,7 +179,7 @@ export default function AuthPage({ onAuth, onClose }) {
                       </InputRightElement>
                     </InputGroup>
                   </FormControl>
-                  <Button type="submit" colorScheme="brand" width="full" isLoading={isLoading}>
+                  <Button type="submit" color="black" border="2px solid" borderColor="black" width="full" isLoading={isLoading}>
                     Sign Up
                   </Button>
                   <Text mt={4} textAlign="center" fontSize="sm" color={textColor}>

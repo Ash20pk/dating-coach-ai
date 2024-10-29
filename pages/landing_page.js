@@ -141,7 +141,7 @@ const LandingPage = ({ onShowAuth }) => {
               <Text fontSize="xl" maxW="2xl" color={headingColor}>
                 Your personal DatingCoachGPT is here to guide you to meaningful connections and lasting relationships.
               </Text>
-              <Button size="lg" colorScheme="whiteAlpha" onClick={onShowAuth}>
+              <Button size="lg" color="black" border="2px solid" borderColor="black" onClick={onShowAuth}>
                 Start Your Love Journey
               </Button>
             </VStack>
@@ -330,7 +330,7 @@ const LandingPage = ({ onShowAuth }) => {
             </Text>
             <Button
               size="lg"
-              colorScheme="whiteAlpha"
+              color="black"
               onClick={onShowAuth}
               fontWeight="bold"
               px={8}
@@ -339,7 +339,7 @@ const LandingPage = ({ onShowAuth }) => {
               _hover={{ transform: 'scale(1.05)', boxShadow: 'xl' }}
               transition="all 0.3s"
               border="2px solid"
-              borderColor="white"
+              borderColor="black"
             >
               Get Started Now
             </Button>
@@ -381,7 +381,7 @@ const LandingPage = ({ onShowAuth }) => {
             </VStack>
           </SimpleGrid>
           <Box borderTopWidth={1} borderColor={footerColor} mt={8} pt={8} textAlign="center">
-            <Text>&copy; {new Date().getFullYear()} AI DatingCoachGPT. All rights reserved.</Text>
+            <Text>&copy; {new Date().getFullYear()} DatingCoachGPT. All rights reserved.</Text>
           </Box>
         </Container>
       </Box>

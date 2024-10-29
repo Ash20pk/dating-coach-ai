@@ -1,7 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { useToast } from '@chakra-ui/react';
-import AuthPage from '../pages/components/auth';  
+import AuthPage from '../pages/components/authpage';  
 
 const AuthContext = createContext();
 
@@ -13,7 +12,6 @@ export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
-  const toast = useToast();
 
   useEffect(() => {
     async function loadUserFromToken() {
