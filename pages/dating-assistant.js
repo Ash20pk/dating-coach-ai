@@ -30,7 +30,7 @@ const ChatMessage = ({ message }) => {
       <Flex
         maxW="70%"
         align="start"
-        bg={isAssistant ? undefined : 'brand.500'}
+        bg={isAssistant ? undefined : 'brand.900'}
         color={isAssistant ? 'inherit' : 'white'}
         px={4}
         py={3}
@@ -39,7 +39,7 @@ const ChatMessage = ({ message }) => {
         {isAssistant && (
           <Avatar 
             icon={<Icon as={MessageSquare} />}
-            bg="brand.500"
+            bg="brand.900"
             color="white"
             mr={3}
             size="sm"
@@ -51,7 +51,7 @@ const ChatMessage = ({ message }) => {
   );
 };
 
-const InfoCard = ({ icon, text }) => {
+const InfoCard = ({ icon, text, onClick }) => {
   const bgColor = useColorModeValue('gray.100', 'gray.700');
   const textColor = useColorModeValue('gray.800', 'gray.100');
 
@@ -67,7 +67,8 @@ const InfoCard = ({ icon, text }) => {
       height="100%"
       boxShadow="md"
       transition="all 0.2s"
-      _hover={{ transform: 'scale(1.05)' }}
+      _hover={{ transform: 'scale(1.05)', cursor: 'pointer' }}
+      onClick={onClick}
     >
       <Icon as={icon} size={24} mb={2} color={textColor} />
       <Text fontSize="sm" color={textColor}>{text}</Text>
@@ -213,10 +214,26 @@ export default function DatingAssistantPage() {
             </Text>
             <Center>
               <Grid templateColumns="repeat(2, 1fr)" gap={4} maxW="md">
-                <InfoCard icon={MessageSquare} text="Ask for dating advice" />
-                <InfoCard icon={FileText} text="Get tips for writing a great profile" />
-                <InfoCard icon={Shirt} text="Outfit suggestions for a date" />
-                <InfoCard icon={Mail} text="Help crafting messages to matches" />
+                <InfoCard 
+                  icon={MessageSquare} 
+                  text="Ask for dating advice" 
+                  onClick={() => setInput("Can you give me some general dating advice?")}
+                />
+                <InfoCard 
+                  icon={FileText} 
+                  text="Get tips for writing a great profile" 
+                  onClick={() => setInput("How can I improve my dating profile?")}
+                />
+                <InfoCard 
+                  icon={Shirt} 
+                  text="Outfit suggestions for a date" 
+                  onClick={() => setInput("What should I wear on a first date?")}
+                />
+                <InfoCard 
+                  icon={Mail} 
+                  text="Help crafting messages to matches" 
+                  onClick={() => setInput("How do I write a good first message to a match?")}
+                />
               </Grid>
             </Center>
           </VStack>
@@ -272,7 +289,9 @@ export default function DatingAssistantPage() {
           />
           <Button
             type="submit"
-            colorScheme="brand"
+            color="black"
+            border="2px solid"
+            borderColor="black"
             isDisabled={isLoading || remainingCredits <= 0}
             size="lg"
             borderRadius="full"

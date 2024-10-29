@@ -47,7 +47,7 @@ const PricingCard = ({ title, price, features, isPopular, onClick }) => {
             position="absolute"
             top="-3"
             right="-3"
-            bg="brand.500"
+            bg="brand.900"
             color="white"
             fontSize="sm"
             fontWeight="bold"

@@ -86,7 +86,7 @@ const PricingCard = ({ title, price, features, isPopular, onClick }) => {
           position="absolute"
           top="-3"
           right="-3"
-          bg="brand.500"
+          bg="brand.900"
           color="white"
           fontSize="sm"
           fontWeight="bold"
@@ -99,7 +99,7 @@ const PricingCard = ({ title, price, features, isPopular, onClick }) => {
       )}
       <VStack spacing={4} align="stretch">
         <Heading size="lg">{title}</Heading>
-        <Text fontSize="4xl" fontWeight="bold" color="brand.500">
+        <Text fontSize="4xl" fontWeight="bold" color="brand.900">
           ${price}
           <Text as="span" fontSize="sm" fontWeight="normal" color={useColorModeValue('gray.600', 'gray.400')}>
             /month
@@ -107,7 +107,7 @@ const PricingCard = ({ title, price, features, isPopular, onClick }) => {
         </Text>
         {features.map((feature, index) => (
           <HStack key={index}>
-            <Icon as={GiLovers} color="brand.500" />
+            <Icon as={GiLovers} color="brand.900" />
             <Text>{feature}</Text>
           </HStack>
         ))}
@@ -322,7 +322,7 @@ const LandingPage = ({ onShowAuth }) => {
         </Box>
 
         {/* CTA Section */}
-        <Box py={20} bg="brand.500" color="white">
+        <Box py={20} bg="brand.900" color="white">
           <Container maxW="container.xl" textAlign="center">
             <Heading mb={6}>Ready to Find Your Perfect Match?</Heading>
             <Text fontSize="xl" mb={8}>
